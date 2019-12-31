@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ListviewCommand"
+             xmlns:local1="clr-namespace:ListviewCommand.NewFolder"
+             xmlns:customized="clr-namespace:ListviewCommand.Customized"
+             x:Class="ListviewCommand.MainPage"
+            x:Name="MainPagee">
+    <!--Common Styles Starts-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="LightGreenColor">#2FA999</Color>
+            <Color x:Key="BorderColor">#D8D8D8</Color>
+
+            <Style x:Key="LableStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#666666" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            </Style>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="HeightRequest" Value="40"></Setter>
+                <Setter Property="Margin" Value="5,0,0,0"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--Common Styles Ends-->
+    <ContentPage.Content>
+    <StackLayout>
+        <!-- Place new controls here -->
+
+            <local1:BetterListView HasUnevenRows="True" Rotation="270" Header="ufdgh" Footer="jkhgdf" ItemsSource="{Binding EmployeeList}" ItemClickedCommand="{Binding ItemCilckedCommand}"  >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <ViewCell.ContextActions>
+                                <ToolbarItem Text="Delete" Command="{Binding Path=BindingContext.DeleteCommand , Source={x:Reference MainPagee}}" CommandParameter="{Binding .}"></ToolbarItem>
+                            </ViewCell.ContextActions>
+                            <StackLayout Orientation="Vertical">
+                                <!--<ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">-->
+                                    <Grid Padding="8,8" RowSpacing="8" ColumnSpacing="8" MenuItem.Accelerator="">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                          
+
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                           
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image Aspect="Fill" Source="dog.png" Grid.Row="0" Rotation="90"  Grid.Column="0" Opacity="1" />
+                                    <Label FontAttributes="Italic" FontSize="Large" Text="Hello"  Rotation="90" TextColor="black" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0" Grid.Row="0"/>
+                                    <Image Aspect="Fill" Source="dog.png" Grid.Row="0" Rotation="90"  Grid.Column="0" Opacity="1" />
+                                    <Label FontAttributes="Italic" FontSize="Large" Text="Hello"  Rotation="90" TextColor="black" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0" Grid.Row="0"/>
+                                    <Image Aspect="Fill" Source="dog.png" Grid.Row="0" Rotation="90"  Grid.Column="0" Opacity="1" />
+                                    <Label FontAttributes="Italic" FontSize="Large" Text="Hello"  Rotation="90" TextColor="black" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0" Grid.Row="0"/>
+                                    <Image Aspect="Fill" Source="dog.png" Grid.Row="0" Rotation="90"  Grid.Column="0" Opacity="1" />
+                                    <Label FontAttributes="Italic" FontSize="Large" Text="Hello"  Rotation="90" TextColor="black" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0" Grid.Row="0"/>
+
+
+                                </Grid>
+                                <!--</ScrollView>-->
+                                <!--<Label Text="{Binding EmployeeName}"></Label>
+                                <Label Text="{Binding EmployeeName}"></Label>-->
+                            </StackLayout>
+
+                           
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </local1:BetterListView>
+            <StackLayout>
+                <Frame Style="{StaticResource FrameStyle}">
+                    <Entry IsPassword="True" x:Name="txtdPassword" Style="{StaticResource EntryStyle}"></Entry>
+                </Frame>
+                <Frame Style="{StaticResource FrameStyle}">
+                    <customized:CustomEntry IsPassword="True" x:Name="txtPassword" Style="{StaticResource EntryStyle}"></customized:CustomEntry>
+                </Frame>
+                <Label Text="{Binding DispalyMessage}"></Label>
+                <Button Text="ADD Employee" Command="{Binding AddEmployee}"></Button>
+            </StackLayout>
+    </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
